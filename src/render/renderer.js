@@ -4,3 +4,14 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+//在渲染器进程 (网页) 中。
+const { ipcRenderer } = require('electron')
+console.log(ipcRenderer.sendSync('synchronous-message', 'pingxxxxxxxxxxxx')) // prints "pong"
+
+ipcRenderer.send('asynchronous-message', 'ping5555')
+
+ipcRenderer.on('asynchronous-reply', (event, arg) => {
+    console.log('=3') // prints "pong"
+    console.log(arg) // prints "pong"
+    console.log('=3') // prints "pong"
+})

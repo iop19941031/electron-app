@@ -2,21 +2,24 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 
+require('./src/main/ipc')
+
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, './src/main/preload.js')
+      preload: path.join(__dirname, './src/main/preload.js'),
+      nodeIntegration: true
     }
   })
 
   mainWindow.webContents.openDevTools()
 
   // and load the index.html of the app.
-  // mainWindow.loadFile('index.html')
-  mainWindow.loadURL('http://localhost:8088/')
+  mainWindow.loadFile('./public/index.html')
+  // mainWindow.loadURL('http://localhost:8088/')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
