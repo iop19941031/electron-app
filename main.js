@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, session } = require('electron')
 const path = require('path')
+const os = require('os')
 
 require('./src/main/ipc')
 
@@ -18,11 +19,12 @@ function createWindow() {
   mainWindow.webContents.openDevTools()
 
   // and load the index.html of the app.
-  mainWindow.loadFile('./public/index.html')
-  // mainWindow.loadURL('http://localhost:8088/')
+  // mainWindow.loadFile('./public/index.html')
+  // mainWindow.loadFile('../react-webpack/dist/index.html')
+  mainWindow.loadURL('http://localhost:8088/')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools({ detach: true });
 }
 
 // This method will be called when Electron has finished
@@ -36,6 +38,11 @@ app.whenReady().then(() => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
+})
+
+app.on('ready', async () => {
+  await session.defaultSession.loadExtension(
+    path.join(os.homedir(), '/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.10.1_0'))
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
