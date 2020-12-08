@@ -1,3 +1,5 @@
+pages is here: https://github.com/iop19941031/-electron-app-pages
+
 # electron-quick-start
 
 **Clone and run for a quick way to see Electron in action.**
