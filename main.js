@@ -43,6 +43,9 @@ app.whenReady().then(() => {
 app.on('ready', async () => {
   await session.defaultSession.loadExtension(
     path.join(os.homedir(), '/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.10.1_0'))
+
+  await session.defaultSession.loadExtension(
+    path.join(os.homedir(), '/AppData/Local/Google/Chrome/User Data/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.0_0'))
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
