@@ -3,7 +3,7 @@ const { app, BrowserWindow, session } = require('electron')
 const path = require('path')
 const os = require('os')
 
-require('./src/main/ipc')
+require('./src/main/ipc-test')
 
 function createWindow() {
   // Create the browser window.
@@ -19,9 +19,9 @@ function createWindow() {
   mainWindow.webContents.openDevTools()
 
   // and load the index.html of the app.
-  // mainWindow.loadFile('./public/index.html')
+  mainWindow.loadFile('./public/index.html')
   // mainWindow.loadFile('../react-webpack/dist/index.html')
-  mainWindow.loadURL('http://localhost:8088/')
+  // mainWindow.loadURL('http://localhost:8088/')
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools({ detach: true });
