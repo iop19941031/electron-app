@@ -6,12 +6,16 @@
 // process.
 //在渲染器进程 (网页) 中。
 const { ipcRenderer } = require('electron')
-// console.log(ipcRenderer.sendSync('synchronous-message', 'pingxxxxxxxxxxxx')) // prints "pong"
 
-ipcRenderer.send('get-all-music', 'ping5555')
+// ipcRenderer.send('get-all-music', 'ping5555')
 
-ipcRenderer.on('get-all-music', (event, arg) => {
-    console.log('=3') // prints "pong"
+// ipcRenderer.on('get-all-music', (event, arg) => {
+//     console.log('=3') // prints "pong"
+//     console.log(arg) // prints "pong"
+//     console.log('=3') // prints "pong"
+// })
+
+ipcRenderer.send('get-tag')
+ipcRenderer.on('get-all-tag', (event, arg) => {
     console.log(arg) // prints "pong"
-    console.log('=3') // prints "pong"
 })
